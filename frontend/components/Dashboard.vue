@@ -82,7 +82,7 @@ export default {
         if (q.id === a.question_id) {
           self.chartsAll[i].labels.push(a.answer)
           const total = self.dashboard.dashboard.reduce((sum, d) => {
-            if (d.questions[q.id].answer === a.id) {
+            if ((d.questions[q.id] !== undefined) && (d.questions[q.id].answer === a.id)) {
               sum = sum + 1
             }
             return sum
@@ -93,23 +93,6 @@ export default {
     })
 
     // Gender
-    /* this.chartsGender.push({question: 'Bla', data: {labels: [], datasets: []}})
-
-    this.chartsGender[0].data.datasets = [{
-      data: [6, 4, 5],
-      backgroundColor: 'Blue',
-      label: 'Masculino'
-    },
-    {
-      data: [5, 3, 7],
-      backgroundColor: 'Red',
-      label: 'Feminino'
-    },
-    {
-      data: [4, 5, 5],
-      backgroundColor: 'Purple',
-      label: 'Outros'
-    }] */
     this.dashboard.questions.forEach((q, i) => {
       if (q.id !== 1) {
         let color = 0
@@ -129,7 +112,7 @@ export default {
           if (q.id === a.question_id) {
             genders_id.forEach((gender, x) => {
               const total = self.dashboard.dashboard.reduce((sum, d) => {
-                if (d.questions[q.id].answer === a.id && d.questions[1].answer === gender) {
+                if ((d.questions[q.id] !== undefined) && (d.questions[q.id].answer === a.id) && (d.questions[1].answer === gender)) {
                   sum = sum + 1
                 }
                 return sum

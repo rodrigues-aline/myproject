@@ -18,6 +18,7 @@ export default {
   },
   asyncData () {
     return api.dashboard().then(result => {
+      debugger
       return {dashboard: result}
     })
   }
