@@ -6,7 +6,6 @@ export default {
   extends: Bar,
   props: ['chartdata', 'options'],
   mounted () {
-    console.log(this.chartdata)
     this.renderChart(this.chartdata, this.options)
   }
 }

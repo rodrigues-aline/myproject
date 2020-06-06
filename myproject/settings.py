@@ -62,7 +62,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.open_access_middleware'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_METADATA_CLASS': 'core.metadata.SimpleMetadata'
+}
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -83,7 +88,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

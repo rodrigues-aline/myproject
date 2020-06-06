@@ -17,7 +17,7 @@ export default {
     return get('/api/list_questions')
   },
   add_answers (answers) {
-    return post('/api/add_answers', {answers})
+    return post('/api/add_answers', {age: answers.age, latitude: answers.latitude, longitude: answers.longitude, questions: JSON.stringify(answers.questions)})
   },
   dashboard () {
     return get('/api/dashboard')

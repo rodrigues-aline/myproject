@@ -6,7 +6,6 @@ export default {
   extends: Doughnut,
   props: ['chartdata', 'options'],
   mounted () {
-    console.log(this.options)
     this.renderChart(this.chartdata, this.options)
   }
 }

@@ -7,6 +7,9 @@ const _apijs = _apimock ? 'apimock' : 'api'
 
 export default {
   mode: 'universal',
+  env: {
+    baseUrl: process.env.API_BASE_URL || 'http://localhost:3000'
+  },
   /*
   ** Headers of the page
   */

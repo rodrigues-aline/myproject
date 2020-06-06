@@ -13,24 +13,25 @@ def dapau(request):
 
 @csrf_exempt
 def login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = auth.authenticate(username=username, password=password)
-    user_dict = None
-    if user is not None:
-        if user.is_active:
-            auth.login(request, user)
-            log_svc.log_login(request.user)
-            user_dict = _user2dict(user)
-    return JsonResponse(user_dict, safe=False)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+        user_dict = None
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                log_svc.log_login(request.user)
+                user_dict = _user2dict(user)
+        return JsonResponse(user_dict, safe=False)
+    return JsonResponse({})
 
 
 def logout(request):
-    if request.method.lower() != 'post':
-        raise Exception('Logout only via post')
-    if request.user.is_authenticated:
-        log_svc.log_logout(request.user)
-    auth.logout(request)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            log_svc.log_logout(request.user)
+        auth.logout(request)
     return HttpResponse('{}', content_type='application/json')
 
 
@@ -57,15 +58,17 @@ def dashboard(request):
 def list_questions(request):
     questions = question_svc.list_questions()
     answers = question_svc.list_answers()
-    return JsonResponse({'questions': questions, 'answers': answers})
+    response =  JsonResponse({'questions': questions, 'answers': answers})
+    return response
 
-
+@csrf_exempt
 def add_answers(request):
-    age = request.POST['age']
-    latitude = request.POST['latitude']
-    longitude = request.POST['longitude']
-    questions = json.loads(request.POST['questions'])
-    question_svc.add_answers(age, latitude, longitude, questions)
+    if request.method == 'POST':
+        age = request.POST['age']
+        latitude = request.POST['latitude']
+        longitude = request.POST['longitude']
+        questions = json.loads(request.POST['questions'])
+        question_svc.add_answers(age, latitude, longitude, questions)
     return JsonResponse({})
 
 
