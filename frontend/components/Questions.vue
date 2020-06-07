@@ -28,6 +28,12 @@ export default {
   data () {
     return {}
   },
+  created () {
+    if (this.questions.length === 0) {
+      Snacks.show(this.$store, {text: 'Não há perguntas para responder', color: 'error'})
+      this.$router.push({name: 'index'})
+    }
+  },
   methods: {
     submit () {
       Snacks.hide(this.$store)
