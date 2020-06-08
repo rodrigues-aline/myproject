@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Pesquisa de Opnião Política</h1>
+    <h1>Pesquisa de Opinião Política</h1>
     <br/><v-divider></v-divider><br/>
     <v-row>
       <v-col v-for="(chart, i) in chartsAll" :key="i" cols="12" lg="4" md="6" sm="12" xs="12">
@@ -11,7 +11,7 @@
       </v-col>
     </v-row>
     <br/>
-    <h2>Perguntas por Genero</h2>
+    <h2>Perguntas por Gênero</h2>
     <br/><v-divider></v-divider><br/>
     <v-row>
       <v-col v-for="(chart, i) in chartsGender" :key="i" cols="12" lg="6" md="12" sm="12" xs="12">
