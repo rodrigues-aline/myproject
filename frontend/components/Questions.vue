@@ -5,7 +5,7 @@
     <v-card v-for="(q, i) in questions" :key="q.id" class="pa-2" outlined tile>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title><b>{{i+1}}</b> - {{q.question}}</v-list-item-title>
+          <div><b>{{i+1}}</b> - {{q.question}}</div>
           <v-radio-group v-model="useranswers.questions[q.id].answer">
             <v-radio v-for="a in q.answers" :key="a.id" :label="`${a.answer}`" :value="a.id" />
           </v-radio-group>

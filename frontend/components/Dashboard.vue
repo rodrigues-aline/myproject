@@ -3,7 +3,7 @@
     <h1>Pesquisa de Opnião Política</h1>
     <br/><v-divider></v-divider><br/>
     <v-row>
-      <v-col v-for="(chart, i) in chartsAll" :key="i" cols="3" lg="4" md="6" sm="12">
+      <v-col v-for="(chart, i) in chartsAll" :key="i" cols="12" lg="4" md="6" sm="12" xs="12">
         <v-card class="pa-2" outlined tile>
           <p class="text-center">{{chart.question}}</p>
           <doughnut-chart v-if="loaded" :chartdata="chart" :options="optionsAll" height="250"/>
@@ -14,7 +14,7 @@
     <h2>Perguntas por Genero</h2>
     <br/><v-divider></v-divider><br/>
     <v-row>
-      <v-col v-for="(chart, i) in chartsGender" :key="i" cols="3" lg="6" md="12" sm="12">
+      <v-col v-for="(chart, i) in chartsGender" :key="i" cols="12" lg="6" md="12" sm="12" xs="12">
         <v-card class="pa-2" outlined tile>
           <p class="text-center">{{chart.question}}</p>
           <bar-chart v-if="loaded" :chartdata="chart.data" :options="optionsGender" height="250"/>
